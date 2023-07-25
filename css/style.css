@@ -8862,6 +8862,10 @@ textarea.form-control {
     font-size: 18px;
     margin-bottom: 15px; }
 
+.btn{
+  border-radius:8px;
+}
+
 .categories li, .sidelink li {
   position: relative;
   margin-bottom: 10px;
@@ -8959,6 +8963,46 @@ textarea.form-control {
   left:100%
 
 }
+@media screen and (min-width:1024px) { 
+  #get_sequence{
+    position:relative;
+    left:30%;
+
+  }
+
+  #clear_sequence{
+    position:relative;
+    left:36%;
+  }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) { 
+  #get_sequence{
+    position:relative;
+    left:30%;
+
+  }
+
+  #clear_sequence{
+    position:relative;
+    left:36%;
+  }
+}
+
+@media screen and (max-width:768px){ 
+  #get_sequence{
+    position:relative;
+    left:0%;
+
+  }
+
+  #clear_sequence{
+    position:relative;
+    left:0%;
+    top:30%;
+  }
+}
+
 
 @-webkit-keyframes loader-rotate {
   100% {
