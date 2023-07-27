@@ -1,11 +1,7 @@
 
-
 const blank='-';
-// var sequence1="TGGATACGAATTTTGAGGTGCATGCAAGGC";
-// var sequence2="TGGAACGAATTACGGTGCATGCATGC";
 var s1=document.getElementById('sequence1');
 var s2=document.getElementById('sequence2');
-
 var get_sequence=document.querySelector("#get_sequence");
 // reset button function starts
 var clear_sequence=document.querySelector("#clear_sequence");
@@ -119,24 +115,26 @@ get_sequence.addEventListener(
         console.log('H_matrix[3][2]:',H_matrix[3][2]);
     
         //building a H_matrix ends
+        
         //searching the maximum of the H_matrix starts
         var max_index=max_dim(H_matrix);
         var trace_H_index_1=max_index[0];
         var trace_H_index_2=max_index[1];
         var seq1_index=max_index[1]-1;
         var seq2_index=max_index[0]-1;
-        sequenceA=sequence1[seq1_index];
-        sequenceB=sequence2[seq2_index];
+        // sequenceA=sequence1[seq1_index];
+        // sequenceB=sequence2[seq2_index];
+
         //searching the maximum of the H_matrix ends
-        console.log(H_matrix);
-        console.log('seq1_index:',seq1_index)
-        console.log('seq2_index:',seq2_index)
-        console.log('trace_H_index_1:',trace_H_index_1)
-        console.log('trace_H_index_2:',trace_H_index_2)
-        console.log('trace_matrix:',H_matrix[trace_H_index_1][trace_H_index_2])
-        console.log('sequenceA:',sequenceA)
-        console.log('sequenceB:',sequenceB)
-        console.log('############')
+        // console.log(H_matrix);
+        // console.log('seq1_index:',seq1_index)
+        // console.log('seq2_index:',seq2_index)
+        // console.log('trace_H_index_1:',trace_H_index_1)
+        // console.log('trace_H_index_2:',trace_H_index_2)
+        // console.log('trace_matrix:',H_matrix[trace_H_index_1][trace_H_index_2])
+        // console.log('sequenceA:',sequenceA)
+        // console.log('sequenceB:',sequenceB)
+        // console.log('############')
         //tracing back starts
         while (true){
             if (seq1_index==0 || seq2_index==0){
@@ -150,9 +148,10 @@ get_sequence.addEventListener(
             var m=Math.max.apply(null,trace);
             
             if (trace.indexOf(m)==0){
-                seq2_index-=1;
+                
                 sequenceA+='_';
                 sequenceB+=sequence2[seq2_index];
+                seq2_index-=1;
                 trace_H_index_1-=1;
                 console.log('seq1_index:',seq1_index)
             console.log('seq2_index:',seq2_index)
@@ -166,10 +165,11 @@ get_sequence.addEventListener(
             }
                 
             else if(trace.indexOf(m)==1){
-                seq1_index-=1;
-                seq2_index-=1;
+                
                 sequenceA+=sequence1[seq1_index];
                 sequenceB+=sequence2[seq2_index];
+                seq1_index-=1;
+                seq2_index-=1;
                 trace_H_index_1-=1;
                 trace_H_index_2-=1;
                 
@@ -188,9 +188,10 @@ get_sequence.addEventListener(
             }
                 
             else{
-                seq1_index-=1;
+                
                 sequenceA+=sequence1[seq1_index];
                 sequenceB+='_';
+                seq1_index-=1;
                 trace_H_index_2-=1;
                 console.log('seq1_index:',seq1_index)
             console.log('seq2_index:',seq2_index)
@@ -204,6 +205,10 @@ get_sequence.addEventListener(
             }
         
         }
+         
+        sequenceA+=sequence1[seq1_index];
+        sequenceB+=sequence2[seq2_index];
+        
         //tracing back ends
         var aligned_sequenceA=reverse(sequenceA)+sequence1.substring(max_index[1]);
         var aligned_sequenceB=reverse(sequenceB)+sequence2.substring(max_index[0]);
